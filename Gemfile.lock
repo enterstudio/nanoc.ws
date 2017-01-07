@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cowboyd/therubyracer.git
-  revision: a635aee79b2057c396f8af92417cadf93415c275
+  revision: 466a1f0d4f696acfe971899272359623ec0a7a97
   specs:
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -87,6 +87,10 @@ GEM
     ruby_dep (1.5.0)
     rubypants (0.6.0)
     sass (3.4.23)
+    sassc (1.11.1)
+      bundler
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
     shellany (0.0.1)
     slop (3.6.0)
     stackprof (0.2.10)
@@ -121,6 +125,7 @@ DEPENDENCIES
   rake
   rubypants
   sass (~> 3.4)
+  sassc (~> 1.11)
   stackprof
   susy (~> 2.2)
   systemu

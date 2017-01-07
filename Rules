@@ -25,7 +25,7 @@ end
 passthrough '/assets/images/**/*'
 
 compile '/assets/style/*' do
-  filter :sass, syntax: :scss
+  filter :sassc, syntax: :scss
   filter :relativize_paths, :type => :css
   filter :rainpress
 

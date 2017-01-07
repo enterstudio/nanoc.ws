@@ -17,6 +17,7 @@ gem 'rake'
 gem 'rainpress', github: 'ddfreyne/rainpress'
 gem 'rubypants'   # for pretty typography
 gem 'sass', '~> 3.4'
+gem 'sassc', '~> 1.11'
 gem 'susy', '~> 2.2'
 gem 'systemu'     # for invoking rsync etc
 gem 'htmlcompressor'
