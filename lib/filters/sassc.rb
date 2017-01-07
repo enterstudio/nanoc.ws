@@ -1,46 +1,25 @@
 require 'sassc'
 
 class NanocSassImporter < SassC::Importer
-  def initialize(item, items, filter, options)
-    super(options)
-    @item = item
+  def initialize(items, filter, options)
     @items = items
     @filter = filter
   end
 
   def new(options)
-    initialize(@item, @items, @filter, options)
+    initialize(@items, @filter, options)
     self
   end
 
   def imports(path, parent_path)
-    candidates = []
-
     full_path = File.expand_path(path, File.dirname(parent_path)).sub(/\.s[ac]ss$/, '')
-    candidates << full_path
-
     last_slash_idx = full_path.rindex('/')
-    candidates << full_path.dup.tap { |x| x[last_slash_idx + 1, 0] = '_'}
+    glob = full_path.dup.tap { |x| x[last_slash_idx + 1, 0] = '{,_}' } + '.*'
+    item = @items[glob]
 
-    candidates.concat(candidates.flat_map { |e| [e + '.scss', e + '.sass'] })
-
-    filename = candidates.find { |e| File.file?(e) }
-
-    root = Dir.getwd + '/content'
-    unless filename.start_with?(root)
-      raise '?!'
-    end
-
-    identifier = filename[root.length..-1]
-
-    item = @items[identifier]
-    p item
-
-    p "Creating dependency on #{item}…"
     @filter.depend_on([item])
-    p "Created dependency on #{item}"
 
-    Import.new(filename)
+    Import.new(item.identifier.to_s, source: item.raw_content.dup)
   end
 end
 
@@ -49,8 +28,8 @@ Class.new(Nanoc::Filter) do
 
   def run(content, params = {})
     options = params.merge(
-      importer: NanocSassImporter.new(@item, @items, self, {}),
-      filename: @item.raw_filename,
+      importer: NanocSassImporter.new(@items, self, {}),
+      filename: @item.identifier.to_s,
     )
 
     ::SassC::Engine.new(content.dup, options).render
