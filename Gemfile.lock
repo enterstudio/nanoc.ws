@@ -124,7 +124,6 @@ DEPENDENCIES
   rainpress!
   rake
   rubypants
-  sass (~> 3.4)
   sassc (~> 1.11)
   stackprof
   susy (~> 2.2)
