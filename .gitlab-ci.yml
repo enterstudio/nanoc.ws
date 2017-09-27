@@ -1,0 +1,8 @@
+image: ruby:2.4
+pages:
+  script:
+  - bundle install -j4
+  - nanoc
+  artifacts:
+    paths:
+    - public

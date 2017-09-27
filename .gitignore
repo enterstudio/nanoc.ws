@@ -1,6 +1,6 @@
 .sass-cache/
 tmp/
-output/
+public/
 crash.log
 output.diff
 .DS_Store
