@@ -6,3 +6,5 @@ pages:
   artifacts:
     paths:
       - public
+variables:
+  LC_ALL: "C.UTF-8"
