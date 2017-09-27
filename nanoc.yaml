@@ -10,6 +10,7 @@ prune:
 
 data_sources:
   - type: filesystem
+    encoding: utf-8
   - type: cli
     items_root: /doc/reference/commands/
   - type: release_notes
