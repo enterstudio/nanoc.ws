@@ -1,8 +1,8 @@
 image: ruby:2.4
 pages:
   script:
-  - bundle install -j4
-  - nanoc
+    - bundle install -j4
+    - bundle exec nanoc
   artifacts:
     paths:
-    - public
+      - public
