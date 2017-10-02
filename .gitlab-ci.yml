@@ -3,6 +3,7 @@ pages:
   script:
     - bundle install -j4
     - bundle exec nanoc
+    - bundle exec nanoc check --deploy
   artifacts:
     paths:
       - public
